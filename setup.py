@@ -4,30 +4,31 @@ from setuptools import setup, find_packages
 my_packages = find_packages()
 
 setup(
-    name='Flask-JSONAPI-trivial',
-    version='0.2.0',
-    url='http://github.com/subsect/flask-jsonapi-trivial/',
-    license='CC BY-NC-SA 4.0',
-    author='Austin Plunkett',
-    author_email='austin.plunkett+flask@gmail.com',
-    description='Provides Flask with *very basic* JSONAPI.org compliance',
+    name="flask_jsonapi_trivial",
+    version=open("VERSION").read(),
+    url="http://github.com/subsect/flask_jsonapi_trivial/",
+    license="CC BY-NC-SA 4.0",
+    author="austinjp",
+    author_email="austin.plunkett+pypi@gmail.com",
+    description="Provides Flask with *very basic* JSONAPI.org compliance",
     long_description=open("README.md").read(),
-    # py_modules=['flask_jsonapi_trivial'],
+    long_description_content_type="text/markdown",
     packages=my_packages,
     zip_safe=False,
     include_package_data=True,
-    platforms='any',
-    install_requires=[
-        'Flask',
-        'python-jose[cryptography]'
-        'Werkzeug'
-    ],
+    platforms="any",
+    install_requires=[ _ for _ in open("requirements.txt").read().split("\n") if _ ],
+    python_requires="~=3.6",
     classifiers=[
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'
+        "Development Status :: 3 - Alpha",
+        "Environment :: Web Environment",
+        "Framework :: Flask",
+        "Intended Audience :: Developers",
+        "License :: Free for non-commercial use",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Topic :: Internet :: WWW/HTTP :: WSGI",
+        "Topic :: Software Development :: Libraries :: Application Frameworks",
+        "Topic :: Software Development :: Libraries :: Python Modules"
     ]
 )
