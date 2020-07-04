@@ -15,13 +15,25 @@ Werkzeug Unauthorized 401 exceptions. Extra information about the JWT
 error is added to the returned JSON.
 
 
-## Example
+## Installation
+
+Install into a virtual environment:
+
+```
+virtualenv --python python3 venv
+source venv/bin/activate
+pip install flask-jsonapi-trivial
+```
+
+
+## Example usage
 
 ```python
 from flask import Flask, abort
 from flask_jsonapi_trivial import jsonapi, JsonApiModel
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from http import HTTPStatus
 from werkzeug import exceptions
 import json
 
@@ -49,6 +61,7 @@ def custom_error_handler(e):
 # Standard errors can simply be raised, the
 # custom error handler catches them.
 @app.route('/raise')
+@jsonapi
 def raise_error():
     raise exceptions.NotImplemented
 
@@ -117,5 +130,4 @@ def show_limited_model():
     model.id = 999
     model.name = "Limited Model"
     return HTTPStatus.OK, model.jsonapi_limited(show_id=True)
-
 ```
