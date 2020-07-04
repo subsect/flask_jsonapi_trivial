@@ -1,5 +1,4 @@
 cryptography>=2.9.2
 Flask>=1.0.2
-# pkg-resources==0.0.0
 python-jose[cryptography]>=3.1.0
 Werkzeug>=0.15.3
