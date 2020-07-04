@@ -34,6 +34,7 @@ def raise_error():
 
 # Errors can simply be returned as well:
 @app.route('/show_error')
+@jsonapi
 def show_error():
     return exceptions.ImATeapot
 
@@ -42,6 +43,7 @@ def show_error():
 # handler has been registered, provided it is
 # called with an appropriate numerical code.
 @app.route('/abort')
+@jsonapi
 def flask_abort():
     abort(exceptions.NotImplemented.code)
 
@@ -78,6 +80,7 @@ class MyModel(db.Model, JsonApiModel):
 # Then it's simple to return the JSON representation
 # of the model. Correct headers etc are taken care of.
 @app.route('/show_model')
+@jsonapi
 def show_model():
     model = MyModel()
     model.id = 1
@@ -88,6 +91,7 @@ def show_model():
 # from the model, leaving the keys intact. Any "id"
 # field is removed unless specified.
 @app.route('/show_limited_model')
+@jsonapi
 def show_limited_model():
     model = MyModel()
     model.id = 999
